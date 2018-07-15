@@ -1,9 +1,7 @@
-# Instruments synthesized source generator for Machine-Learning (ALPHA)
+# SOUNDSET: Generating sound dataset for ML
 
 # Set up
-- $ cd project-directory
-- $ git clone https://github.com/jin0g/soundset.git
-- $ cp /your/path/of/soundfont.sf2 soundset/fonts/soundfont.sf2
+- pip install xxxxxx
 
 # REQUIRES
 - numpy
@@ -25,5 +23,4 @@
 - import soundfont data
 
 # LICENCE
-Only My PRIVATE!!
-DONT USE THIS
+MIT
