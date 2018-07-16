@@ -1,11 +1,9 @@
-import numpy as np
-
 import soundset
 
 
 # create random score for C3~C5note == 130.8~523.3hz
 #-> score object
-s1 = soundset.score.random(length=32,tempo=120,beat=16,chord=3,pitch=0,register=25,random_state=None,channel=1)
+s1 = soundset.score.random(length=32,tempo=120,beat=16,chord=3,pitch=3,register=25,random_state=None)
 
 # create score piano roll
 #-> 2-dim binaly numpy array, size of (length, 128)
@@ -20,7 +18,7 @@ assert roll.shape == (32,25), 'the roll shape is to (32,25) when ignore_out_of_r
 
 # synthesize score
 #-> 1 or 2-dim float on [-1,1] numpy array, size of (length):mono or (length, 2):stereo
-wave = s1.to_wave(font='font1.sf2',instrument=0,stereo=True,rate=44100) # inst0=piano
+wave = s1.to_wave(instrument=0,stereo=True,rate=44100) # inst0=piano
 assert wave.dtype==float
 assert wave.shape==(44100*32*4/16*60/120, 2)
 assert -1<=wave.min() and wave.max()<=1
@@ -29,11 +27,12 @@ assert -1<=wave.min() and wave.max()<=1
 wave = s1.to_wave(instrument=40) # synthesize violin with default font
 
 
+
 # refaences
 
 ## score
 ## you can generate specific score with pianoroll
-s2 = soundset.score.generate(roll=roll) # the size must be (length, 128)
+# s2 = soundset.score.generate(roll=roll) # the size must be (length, 128)
 
 ## (in future) you can generate score from midi file
 # s2 = soundset.score.load(filename='midi/file/name.midi')
@@ -46,4 +45,6 @@ s2 = soundset.score.generate(roll=roll) # the size must be (length, 128)
 ## (in future) wave is Periodic function which period is 2 pi, and range is [-1,1]
 # s2.to_wave(wave=np.sin)
 
-
+print('')
+print('all tests pass.')
+print('done.')
